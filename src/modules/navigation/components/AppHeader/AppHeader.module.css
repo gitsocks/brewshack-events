@@ -1,0 +1,11 @@
+.appHeaderContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2rem;
+  padding: 0.5rem 1rem;
+}
+
+.signOutButton {
+  height: 20px;
+}
