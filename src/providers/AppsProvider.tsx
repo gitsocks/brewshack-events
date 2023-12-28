@@ -7,17 +7,21 @@ export interface AppsContextValue {
     isLoading?: boolean;
     applications?: Application[];
     currentApplication?: Application;
-    changeApplication?: (application: Application) => void;
+    changeApplication: (application?: Application) => void;
 }
 
-export const AppsContext = createContext<AppsContextValue>({});
+export const AppsContext = createContext<AppsContextValue>({
+    changeApplication: () => { }
+});
 
 export const AppsProvider = ({ children }: PropsWithChildren) => {
     const { currentUser } = useContext(CurrentUserContext);
     const { data, isLoading } = useCurrentUserApplicationsQuery(currentUser?.id);
     const [currentApplication, setCurrentApplication] = useState<Application>();
 
-    const handleApplicationChange = (application: Application) => setCurrentApplication(application);
+    const handleApplicationChange = (application?: Application) => {
+        setCurrentApplication(application);
+    };
 
     useEffect(() => {
         if (data) [

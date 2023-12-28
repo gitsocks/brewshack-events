@@ -10,11 +10,7 @@ export default function Home() {
 
   return (
     <>
-      <main>
-        <Container>
-          <h1>Hey {isLoading ? 'loading ...' : currentUser?.name}</h1>
-        </Container>
-      </main>
+      <h1>Hey {isLoading ? 'loading ...' : currentUser?.name}</h1>
     </>
   );
 }

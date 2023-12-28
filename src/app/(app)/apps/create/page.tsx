@@ -6,13 +6,11 @@ import styles from './page.module.css';
 const Page = () => {
     return (
         <main>
-            <Container>
-                <div className={styles.innerContainer}>
-                    <h2>Create a new application</h2>
-                    <p>The first step to start tracking your application&apos;s events.</p>
-                    <CreateApplicationForm />
-                </div>
-            </Container>
+            <div className={styles.innerContainer}>
+                <h2>Create a new application</h2>
+                <p>The first step to start tracking your application&apos;s events.</p>
+                <CreateApplicationForm />
+            </div>
         </main>
     );
 };
