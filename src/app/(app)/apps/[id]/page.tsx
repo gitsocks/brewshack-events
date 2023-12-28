@@ -1,5 +1,7 @@
 import { IPageParams } from "@/models/types/IPageParams";
 import { getApplicationFromServer } from "@/services/server/get-application-from-server";
+import { ApplicationEventLog } from "./components/ApplicationEventLog/ApplicationEventLog";
+import { ApplicationEventsSummary } from "./components/ApplicationEventsSummary/ApplicationEventsSummary";
 
 interface IParams {
     id: number;
@@ -13,7 +15,8 @@ const Page = async ({ params }: IPageParams<IParams>) => {
     return (
         <>
             <h1>{application.name}</h1>
-            <h3>Events</h3>
+            <ApplicationEventsSummary applicationId={application.id} />
+            <ApplicationEventLog applicationId={application.id} />
         </>
     );
 };
