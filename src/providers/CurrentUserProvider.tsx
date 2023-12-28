@@ -16,14 +16,12 @@ export const CurrentUserProvider = ({ children }: PropsWithChildren) => {
     const userService = useUserService();
     const [currentUser, setCurrentUser] = useState<User>();
 
-    const fetchCurrentUser = async () => {
-        const user = await userService.fetchCurrentUser();
-        setCurrentUser(user);
-    };
-
     useEffect(() => {
-        fetchCurrentUser();
-    }, []);
+        async () => {
+            const user = await userService.fetchCurrentUser();
+            setCurrentUser(user);
+        };
+    }, [userService]);
 
     return (
         <CurrentUserContext.Provider value={{

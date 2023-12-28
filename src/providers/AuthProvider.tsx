@@ -25,23 +25,20 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
     );
 
-    const fetchSession = async () => {
-        const { data, error } = await supabase.auth.getSession();
-
-        if (data.session) {
-            setSession(data.session);
-        }
-
-        setIsLoading(false);
-    };
-
     useEffect(() => {
-        fetchSession();
-
         supabase.auth.onAuthStateChange(event => {
             console.log(event);
         });
 
+        async () => {
+            const { data, error } = await supabase.auth.getSession();
+
+            if (data.session) {
+                setSession(data.session);
+            }
+
+            setIsLoading(false);
+        };
     }, [supabase]);
 
     const signOut = async () => {
