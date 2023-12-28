@@ -1,5 +1,4 @@
 import { CreateApplicationForm } from "@/components/forms/CreateApplicationForm/CreateApplicationForm";
-import { Container } from "@/components/layout/Container/Container";
 
 import styles from './page.module.css';
 
