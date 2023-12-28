@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { getUserById } from "./get-user-by-id";
-import { createUser } from "@/database/commands/user/create-user";
+import { createUser } from "@/database/commands/users/create-user";
 import { CurrentUser } from "@/database/types/current-user";
 
 export const getCurrentUserQuery = async (prisma: PrismaClient, userId: string): Promise<CurrentUser> => {
