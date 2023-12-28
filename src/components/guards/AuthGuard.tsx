@@ -2,20 +2,22 @@
 
 import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
+import { PropsWithChildren } from "react";
 
-interface IAuthGuardProps {
+interface IAuthGuardProps extends PropsWithChildren {
     user?: User;
-    isLoggedInPath: string;
 }
 
-export const AuthGuard = ({ user, isLoggedInPath }: IAuthGuardProps) => {
+export const AuthGuard = ({ user, children }: IAuthGuardProps) => {
     const router = useRouter();
 
     if (!user) {
         router.push('/auth/login');
-    } else {
-        router.push(isLoggedInPath);
     }
 
-    return <p>Checking auth state ...</p>;
+    return (
+        <>
+            {children}
+        </>
+    );
 };

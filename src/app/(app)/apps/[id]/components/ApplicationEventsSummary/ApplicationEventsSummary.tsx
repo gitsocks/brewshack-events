@@ -16,7 +16,7 @@ export const ApplicationEventsSummary = ({
         <>
             <h3>Events</h3>
             {isLoading ? (<p>Loading ...</p>) : (
-                <LineChart data={{ labels: data.labels, datasets: data.data }} />
+                <LineChart data={data} />
             )}
         </>
     );

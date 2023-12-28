@@ -8,6 +8,12 @@ import { Application } from "@prisma/client";
 import type { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
+    const authorizedUser = await fetchAuthDetails();
+
+    if (!authorizedUser) {
+        return Response.error();
+    }
+
     const queryParams = request.nextUrl.searchParams;
 
     const roleId = queryParams.get('roleId');

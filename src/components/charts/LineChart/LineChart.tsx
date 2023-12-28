@@ -8,23 +8,13 @@ Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip);
 interface ILineChartProps {
     data: {
         labels: string[];
-        datasets: any[];
+        datasets: {
+            label: string;
+            data: number[];
+        }[];
     };
 }
 
 export const LineChart = ({ data }: ILineChartProps) => {
-    return (
-        <div>
-            <Line
-                data={{
-                    labels: data.labels,
-                    datasets: [
-                        {
-                            data: data.datasets,
-                            backgroundColor: "purple",
-                        }
-                    ],
-                }} />
-        </div>
-    );
+    return <Line data={data} />;
 };

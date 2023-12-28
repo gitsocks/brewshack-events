@@ -26,7 +26,6 @@ export const AppHeader = () => {
         <div className={styles.appHeaderContainer}>
             <div className={styles.appHeaderContainerLeftSlot}>
                 <h3>Brewshack</h3>
-                {!isLoading && <AppSelectDropdown applications={applications} onSelectChange={handleApplicationChange} />}
             </div>
             <button className={styles.signOutButton} onClick={handleSignOut}>Sign Out</button>
         </div>

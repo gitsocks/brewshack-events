@@ -14,6 +14,9 @@ export const getApplicationEventLog = async (prisma: PrismaClient, applicationId
                     event: true
                 }
             }
+        },
+        orderBy: {
+            createdAt: 'desc'
         }
     });
 
