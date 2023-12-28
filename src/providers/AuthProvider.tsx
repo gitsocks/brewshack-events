@@ -30,15 +30,14 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
             console.log(event);
         });
 
-        async () => {
-            const { data, error } = await supabase.auth.getSession();
+        supabase.auth.getSession()
+            .then(({ data, error }) => {
+                if (data.session) {
+                    setSession(data.session);
+                }
 
-            if (data.session) {
-                setSession(data.session);
-            }
-
-            setIsLoading(false);
-        };
+                setIsLoading(false);
+            });
     }, [supabase]);
 
     const signOut = async () => {
