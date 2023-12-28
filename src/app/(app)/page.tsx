@@ -1,16 +1,23 @@
-'use client';
+import { AuthGuard } from "@/components/guards/AuthGuard";
+import { getUserFromServer } from "@/services/server/get-user-from-server";
+import { fetchAuthDetails } from "@/utils/fetch-auth-details";
 
-import { AppsContext } from "@/providers/AppsProvider";
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
+export default async function Home() {
+  const authState = await fetchAuthDetails();
 
-export default function Home() {
-  const { currentApplication, isLoading } = useContext(AppsContext);
-  const router = useRouter();
+  console.log(authState);
 
-  if (!isLoading && currentApplication) {
-    router.push(`/apps/${currentApplication.id}`);
+  let loggedInPath = '';
+
+  if (authState) {
+    const currentUser = await getUserFromServer(authState.id);
+
+    if (currentUser.applications && currentUser.applications?.length > 0) {
+      loggedInPath = `/apps/${currentUser.applications[0].id}`;
+    } else {
+      loggedInPath = '/apps/create';
+    }
   }
 
-  return <>Loading ...</>;
+  return <AuthGuard user={authState} isLoggedInPath={loggedInPath} />;
 }
