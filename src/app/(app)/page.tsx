@@ -4,6 +4,8 @@ import { getUserFromServer } from "@/services/server/get-user-from-server";
 import { fetchAuthDetails } from "@/utils/fetch-auth-details";
 import Link from "next/link";
 
+import styles from './page.module.css';
+
 export default async function Home() {
   const authState = await fetchAuthDetails();
 
@@ -17,7 +19,10 @@ export default async function Home() {
 
   return (
     <AuthGuard user={authState}>
-      <h1>Applications</h1>
+      <div className={styles.header}>
+        <h1>Applications</h1>
+        <Link href={{ pathname: '/apps/create' }}><button>Create Application</button></Link>
+      </div>
       <p>Please select an application to view its events.</p>
       <ul>
         {currentUserIsValid() && currentUser?.applications?.map(application => (
