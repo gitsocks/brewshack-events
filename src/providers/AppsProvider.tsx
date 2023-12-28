@@ -24,10 +24,10 @@ export const AppsProvider = ({ children }: PropsWithChildren) => {
     };
 
     useEffect(() => {
-        if (data) [
-            setCurrentApplication(data[0])
-        ];
-    }, [data]);
+        if (data) {
+            setCurrentApplication(data[0]);
+        };
+    }, [data, isLoading]);
 
     return (
         <AppsContext.Provider value={{

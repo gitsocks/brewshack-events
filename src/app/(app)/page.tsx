@@ -1,16 +1,16 @@
 'use client';
 
-import { Container } from "@/components/layout/Container/Container";
-import { AppHeader } from "@/components/navigation/AppHeader/AppHeader";
-import { CurrentUserContext } from "@/providers/CurrentUserProvider";
+import { AppsContext } from "@/providers/AppsProvider";
+import { useRouter } from "next/navigation";
 import { useContext } from "react";
 
 export default function Home() {
-  const { currentUser, isLoading } = useContext(CurrentUserContext);
+  const { currentApplication, isLoading } = useContext(AppsContext);
+  const router = useRouter();
 
-  return (
-    <>
-      <h1>Hey {isLoading ? 'loading ...' : currentUser?.name}</h1>
-    </>
-  );
+  if (!isLoading && currentApplication) {
+    router.push(`/apps/${currentApplication.id}`);
+  }
+
+  return <>Loading ...</>;
 }

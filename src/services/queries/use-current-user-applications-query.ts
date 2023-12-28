@@ -1,5 +1,4 @@
 import { UserApplication } from "@/database/types/user-application";
-import { User } from "@prisma/client";
 import { useCallback } from "react";
 import { useQuery } from "react-query";
 
