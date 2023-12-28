@@ -6,6 +6,12 @@
   padding: 0.5rem 1rem;
 }
 
+.appHeaderContainerLeftSlot {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
 .signOutButton {
   height: 20px;
 }

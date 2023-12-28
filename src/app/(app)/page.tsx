@@ -1,11 +1,20 @@
-import { AppHeader } from "@/modules/navigation/components/AppHeader/AppHeader";
+'use client';
 
-export default async function Home() {
+import { Container } from "@/components/layout/Container/Container";
+import { AppHeader } from "@/components/navigation/AppHeader/AppHeader";
+import { CurrentUserContext } from "@/providers/CurrentUserProvider";
+import { useContext } from "react";
+
+export default function Home() {
+  const { currentUser } = useContext(CurrentUserContext);
+
   return (
     <>
       <AppHeader />
       <main>
-        <h1>Brewshack Events</h1>
+        <Container>
+          <h1>Hey {currentUser?.name}</h1>
+        </Container>
       </main>
     </>
   );

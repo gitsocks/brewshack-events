@@ -1,16 +1,18 @@
 'use client';
 
 import { createBrowserClient } from "@supabase/ssr";
-import { Session } from "@supabase/supabase-js";
+import { Session, User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { PropsWithChildren, createContext, useContext, useEffect, useState } from "react";
 
 interface AuthContextValue {
     signOut: () => void;
+    currentUser: User | null;
 }
 
 export const AuthContext = createContext<AuthContextValue>({
-    signOut: () => { }
+    signOut: () => { },
+    currentUser: null
 });
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
@@ -53,7 +55,8 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
     return session ? (
         <AuthContext.Provider value={{
-            signOut: signOut
+            signOut: signOut,
+            currentUser: session.user
         }}>
             {children}
         </AuthContext.Provider>

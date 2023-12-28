@@ -18,6 +18,10 @@ export default () => {
     };
 
     return (
-        <button onClick={login}>Login</button>
+        <div>
+            <h2>Login</h2>
+            <p>Welcome to Brewshack Events! Please login to continue.</p>
+            <button onClick={login}>Login with Github</button>
+        </div>
     );
 };
