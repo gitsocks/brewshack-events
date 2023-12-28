@@ -1,29 +1,26 @@
 "use client";
 
-import { useUserService } from "@/services/use-user-service";
+import { useCurrentUserQuery } from "@/services/queries/use-current-user-query";
 import { User } from "@prisma/client";
-import { PropsWithChildren, createContext, useEffect, useState } from "react";
+import { PropsWithChildren, createContext } from "react";
 
 interface CurrentUserContextValue {
     currentUser?: User;
+    isLoading: boolean;
 }
 
 export const CurrentUserContext = createContext<CurrentUserContextValue>({
-    currentUser: undefined
+    currentUser: undefined,
+    isLoading: false
 });
 
 export const CurrentUserProvider = ({ children }: PropsWithChildren) => {
-    const { fetchCurrentUser } = useUserService();
-    const [currentUser, setCurrentUser] = useState<User>();
-
-    useEffect(() => {
-        fetchCurrentUser()
-            .then(user => setCurrentUser(user));
-    }, [fetchCurrentUser]);
+    const { data, isLoading } = useCurrentUserQuery();
 
     return (
         <CurrentUserContext.Provider value={{
-            currentUser: currentUser
+            currentUser: data,
+            isLoading: isLoading
         }}>
             {children}
         </CurrentUserContext.Provider>

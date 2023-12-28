@@ -6,14 +6,13 @@ import { CurrentUserContext } from "@/providers/CurrentUserProvider";
 import { useContext } from "react";
 
 export default function Home() {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, isLoading } = useContext(CurrentUserContext);
 
   return (
     <>
-      <AppHeader />
       <main>
         <Container>
-          <h1>Hey {currentUser?.name}</h1>
+          <h1>Hey {isLoading ? 'loading ...' : currentUser?.name}</h1>
         </Container>
       </main>
     </>
