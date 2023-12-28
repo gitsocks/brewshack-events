@@ -7,6 +7,17 @@ import { bodyFromRequest } from "@/utils/body-from-request";
 import { Application, ApplicationEvent, Event } from "@prisma/client";
 import { headers } from "next/headers";
 
+export async function OPTIONS(request: Request) {
+    return new Response('👋', {
+        status: 200,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization, Clientid',
+        },
+    });
+}
+
 export async function POST(request: Request) {
     const headersList = headers();
     const clientId = headersList.get('clientId');
