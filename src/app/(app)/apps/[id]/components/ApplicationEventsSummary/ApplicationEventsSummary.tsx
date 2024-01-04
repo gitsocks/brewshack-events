@@ -1,6 +1,7 @@
 'use client';
 
 import { LineChart } from "@/components/charts/LineChart/LineChart";
+import { LoadingState } from "@/components/loading/LoadingState/LoadingState";
 import { useApplicationEventsSummaryQuery } from "@/services/queries/use-application-events-summary-query";
 
 interface IApplicationEventsSummaryProps {
@@ -15,7 +16,7 @@ export const ApplicationEventsSummary = ({
     return (
         <>
             <h3>Events</h3>
-            {isLoading ? (<p>Loading ...</p>) : (
+            {isLoading ? (<LoadingState />) : (
                 <LineChart data={data} />
             )}
         </>

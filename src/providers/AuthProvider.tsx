@@ -1,5 +1,6 @@
 'use client';
 
+import { LoadingState } from "@/components/loading/LoadingState/LoadingState";
 import { createBrowserClient } from "@supabase/ssr";
 import { Session, User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
@@ -56,7 +57,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         }}>
             {children}
         </AuthContext.Provider>
-    ) : <>Not logged in</>;
+    ) : <LoadingState />;
 };
 
 export const useAuthContext = () => useContext(AuthContext);
