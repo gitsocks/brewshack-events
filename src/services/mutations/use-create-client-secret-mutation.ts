@@ -22,8 +22,8 @@ export const useCreateClientSecretMutation = (applicationId: number) => {
     );
 
     return useMutation(createClientSecret, {
-        onSuccess: () => {
-            queryClient.invalidateQueries(['applications', applicationId, 'secrets']);
+        onSettled: () => {
+            queryClient.invalidateQueries({ queryKey: [`applications/${applicationId}/secrets`] });
         }
     });
 };

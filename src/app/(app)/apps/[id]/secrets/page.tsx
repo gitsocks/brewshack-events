@@ -1,12 +1,18 @@
+import { IPageParams } from "@/models/types/IPageParams";
 import { ApplicationClientSecrets } from "./components/ApplicationClientSecrets/ApplicationClientSecrets";
 import { ApplicationSecretsHeader } from "./components/ApplicationSecretsHeader/ApplicationSecretsHeader";
 
-const SecretsPage = () => {
+interface IParams {
+    id: number;
+}
+
+const SecretsPage = ({ params }: IPageParams<IParams>) => {
+    const { id } = params;
 
     return (
         <>
             <ApplicationSecretsHeader />
-            <ApplicationClientSecrets />
+            <ApplicationClientSecrets applicationId={id} />
         </>
     );
 };
