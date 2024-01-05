@@ -16,8 +16,8 @@ const Page = async ({ params }: IPageParams<IParams>) => {
     return (
         <>
             <div className="flex space-between">
-                <p>{application.clientId}</p>
-                <Link href={`${application.id}/secrets`}>Secrets</Link>
+                <p>Client Id: {application.clientId}</p>
+                <p>Client Secret: <Link href={`${application.id}/secrets`}>View Secrets</Link></p>
             </div>
             <ApplicationEventsSummary applicationId={application.id} />
             <ApplicationEventLog applicationId={application.id} />

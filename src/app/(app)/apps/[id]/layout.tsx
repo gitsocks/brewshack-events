@@ -16,7 +16,9 @@ export default async function AppsLayout({ params, children }: ILayoutParams) {
 
     return (
         <>
-            <h1>⬅️<Link href={{ pathname: '/' }}>{application.name}</Link></h1>
+            <div>
+                <h1>{application.name}</h1>
+            </div>
             {children}
         </>
     );

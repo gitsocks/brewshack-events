@@ -12,6 +12,7 @@
   align-items: center;
 }
 
-.signOutButton {
-  height: 20px;
+.buttonGroup {
+  display: flex;
+  gap: 0.3rem;
 }
