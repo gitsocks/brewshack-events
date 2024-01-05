@@ -3,16 +3,16 @@ import { useMutation, useQueryClient } from "react-query";
 
 export const useDeleteClientSecretMutation = (applicationId: number) => {
     const queryClient = useQueryClient();
-    let url = `${location.origin}/api/v1/applications/${applicationId}/secrets`;
+
 
     const deleteClientSecret = useCallback(
         async (secretId: number) => {
-            url += `/${secretId}`;
+            let url = `${location.origin}/api/v1/applications/${applicationId}/secrets/${secretId}`;
             await fetch(url, {
                 method: 'DELETE'
             });
         },
-        [url]
+        [applicationId]
     );
 
     return useMutation(deleteClientSecret, {

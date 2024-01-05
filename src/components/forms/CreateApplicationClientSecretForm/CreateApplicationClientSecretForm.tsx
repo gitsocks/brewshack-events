@@ -22,7 +22,7 @@ export const CreateApplicationClientSecretForm = () => {
         <div>
             <p>Your new client secret is:</p>
             <p><b>{newClientSecret.secret}</b></p>
-            <p>Be sure to copy and store in a secure place. The secret won't be shown again.</p>
+            <p>Be sure to copy and store in a secure place. The secret will not be shown again.</p>
         </div>
     );
 };
