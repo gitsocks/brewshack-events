@@ -27,6 +27,7 @@ model Application {
   roles ApplicationRole[]
   events Event[]
   applicationEvents ApplicationEvent[]
+  secrets ClientSecret[]
 }
 
 model ApplicationRole {
@@ -57,6 +58,17 @@ model Event {
   application Application @relation(fields: [applicationId], references: [id])
   applicationEventId Int 
   applicationEvent ApplicationEvent @relation(fields: [applicationEventId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ClientSecret {
+  id Int @id @default(autoincrement())
+  secret String @unique
+  name String
+  applicationId Int
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
