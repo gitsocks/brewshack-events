@@ -1,6 +1,5 @@
 import db, { DatabaseQuery } from "@/database";
 import { createClientSecret } from "@/database/commands/applications/create-client-secret";
-import { getApplicationByClientId } from "@/database/queries/application/get-application-by-client-id";
 import { getApplicationClientSecrets } from "@/database/queries/application/get-application-client-secrets";
 import { IRouteParams } from "@/models/types/IRouteParams";
 import { fetchAuthDetails } from "@/utils/fetch-auth-details";
