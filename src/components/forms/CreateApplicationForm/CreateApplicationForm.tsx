@@ -3,6 +3,7 @@ import styles from './CreateApplicationForm.module.css';
 import { ICreateApplicationFormPayload } from "@/models/payloads/ICreateApplicationFormPayload";
 import { useCreateApplicationMutation } from '@/services/mutations/use-create-application-mutation';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export const CreateApplicationForm = () => {
@@ -11,13 +12,14 @@ export const CreateApplicationForm = () => {
     const router = useRouter();
 
     const onSubmit: SubmitHandler<ICreateApplicationFormPayload> = async (payload: ICreateApplicationFormPayload) => {
-        console.log(payload);
         await createApplication({ ...payload });
+    };
 
+    useEffect(() => {
         if (newApplication) {
             router.push(`/apps/${newApplication.id}`);
         }
-    };
+    }, [newApplication]);
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

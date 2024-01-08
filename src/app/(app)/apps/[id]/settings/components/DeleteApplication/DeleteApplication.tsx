@@ -3,6 +3,8 @@
 import { ConfirmButton } from "@/components/buttons/ConfirmButton/ConfirmButton";
 
 import styles from './DeleteApplication.module.css';
+import { useDeleteApplicationMutation } from "@/services/mutations/use-delete-application-mutation";
+import { useRouter } from "next/navigation";
 
 interface DeleteApplicationProps {
     applicationId: number;
@@ -11,7 +13,13 @@ interface DeleteApplicationProps {
 export const DeleteApplication = ({
     applicationId
 }: DeleteApplicationProps) => {
+    const { mutateAsync: deleteApplication, isLoading } = useDeleteApplicationMutation(applicationId);
+    const router = useRouter();
 
+    const handleDelete = async () => {
+        await deleteApplication();
+        router.push('/');
+    };
 
     return (
         <div className={styles.innerContainer}>
@@ -19,7 +27,7 @@ export const DeleteApplication = ({
                 <h4>Delete Application</h4>
                 <p>Delete the application and all of its data.</p>
             </div>
-            <ConfirmButton onConfirm={() => console.log('delete')}>Delete</ConfirmButton>
+            {isLoading ? <button disabled>Deleting ...</button> : <ConfirmButton onConfirm={() => handleDelete()}>Delete</ConfirmButton>}
         </div>
     );
 };

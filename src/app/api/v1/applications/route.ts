@@ -1,7 +1,9 @@
 import database, { DatabaseQuery } from "@/database";
 import { createApplication } from "@/database/commands/applications/create-application";
+import { deleteApplication } from "@/database/commands/applications/delete-application";
 import { getApplicationsByRole } from "@/database/queries/application/get-applications-by-role";
 import { UserApplication } from "@/database/types/user-application";
+import { IRouteParams } from "@/models/types/IRouteParams";
 import { bodyFromRequest } from "@/utils/body-from-request";
 import { fetchAuthDetails } from "@/utils/fetch-auth-details";
 import { Application } from "@prisma/client";

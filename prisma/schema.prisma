@@ -33,7 +33,7 @@ model Application {
 model ApplicationRole {
   user User @relation(fields: [userId], references: [id])
   userId String
-  application Application @relation(fields: [applicationId], references: [id])
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
   applicationId Int
   role String
   createdAt DateTime @default(now())
@@ -46,7 +46,7 @@ model ApplicationEvent {
   id Int @id @default(autoincrement())
   event String
   applicationId Int
-  application Application @relation(fields: [applicationId], references: [id])
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
   events Event[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -55,9 +55,9 @@ model ApplicationEvent {
 model Event {
   id Int @id @default(autoincrement())
   applicationId Int 
-  application Application @relation(fields: [applicationId], references: [id])
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
   applicationEventId Int 
-  applicationEvent ApplicationEvent @relation(fields: [applicationEventId], references: [id])
+  applicationEvent ApplicationEvent @relation(fields: [applicationEventId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
