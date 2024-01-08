@@ -1,5 +1,6 @@
 'use client';
 
+import { LoadingPage } from "@/components/loading/LoadingPage/LoadingPage";
 import { LoadingState } from "@/components/loading/LoadingState/LoadingState";
 import { createBrowserClient } from "@supabase/ssr";
 import { Session, User } from "@supabase/supabase-js";
@@ -57,7 +58,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         }}>
             {children}
         </AuthContext.Provider>
-    ) : <LoadingState />;
+    ) : <LoadingPage message="Loading auth data ..." />;
 };
 
 export const useAuthContext = () => useContext(AuthContext);

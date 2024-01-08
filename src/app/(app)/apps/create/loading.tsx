@@ -1,5 +1,5 @@
-import { LoadingState } from "@/components/loading/LoadingState/LoadingState";
+import { LoadingPage } from "@/components/loading/LoadingPage/LoadingPage";
 
 export default function Loading() {
-    return <LoadingState />;
+    return <LoadingPage message="Loading, please wait..." />;
 }
