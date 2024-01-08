@@ -1,5 +1,6 @@
 'use client';
 
+import { brewshackEvent } from "@/brewshack";
 import { createBrowserClient } from "@supabase/ssr";
 
 const Page = () => {
@@ -9,6 +10,7 @@ const Page = () => {
     );
 
     const login = () => {
+        brewshackEvent('login');
         supabase.auth.signInWithOAuth({
             provider: 'github',
             options: {

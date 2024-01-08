@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import styles from './CreateApplicationClientSecretForm.module.css';
 import { useCreateClientSecretMutation } from "@/services/mutations/use-create-client-secret-mutation";
+import { brewshackEvent } from "@/brewshack";
 
 export interface CreateApplicationClientSecretFormProps {
     applicationId: number;
@@ -15,6 +16,7 @@ export const CreateApplicationClientSecretForm = ({
     const { mutateAsync: createClientSecret, isLoading, data: newClientSecret } = useCreateClientSecretMutation(applicationId);
 
     const onSubmit: SubmitHandler<ICreateClientSecretFormPayload> = async (payload: ICreateClientSecretFormPayload) => {
+        brewshackEvent('create_secret');
         await createClientSecret({ ...payload });
     };
 

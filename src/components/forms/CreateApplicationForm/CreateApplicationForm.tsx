@@ -1,4 +1,5 @@
 'use client';
+import { brewshackEvent } from '@/brewshack';
 import styles from './CreateApplicationForm.module.css';
 import { ICreateApplicationFormPayload } from "@/models/payloads/ICreateApplicationFormPayload";
 import { useCreateApplicationMutation } from '@/services/mutations/use-create-application-mutation';
@@ -12,6 +13,7 @@ export const CreateApplicationForm = () => {
     const router = useRouter();
 
     const onSubmit: SubmitHandler<ICreateApplicationFormPayload> = async (payload: ICreateApplicationFormPayload) => {
+        brewshackEvent('create_application');
         await createApplication({ ...payload });
     };
 
