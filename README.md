@@ -1,4 +1,8 @@
+![Banner](./docs/assets/Brewshack%20Events.png)
+
 # 📊 Brewshack Events
+
+![Vercel Deploy](https://therealsujitk-vercel-badge.vercel.app/?app=brewshack-events)
 
 ## Overview
 
