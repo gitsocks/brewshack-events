@@ -11,7 +11,7 @@ export const LoadingPage = ({
     return (
         <div className={styles.container}>
             <div className={styles.innerContainer}>
-                <img className={styles.animatedImage} src='./assets/Brewshack Logo.png' />
+                <img className={styles.animatedImage} src='./assets/BrewshackLogo.png' />
                 <p>{message}</p>
             </div>
         </div>
