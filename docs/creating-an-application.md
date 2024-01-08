@@ -13,3 +13,7 @@ An application represents your project, whether it be a mobile app or a web app.
 ## Step 3: View application details
 
 ![Application Details](./assets/application-details.png)
+
+## Read Next
+
+- [Logging the first event](./logging-first-event.md)
