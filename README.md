@@ -6,7 +6,7 @@
 
 ## Overview
 
-Brewshack Events provides developers with a no-bullsh\*t tool to track user behavior within their applications through a simple user interface. Simple log an event and view simple metrics.
+Brewshack Events provides developers with a no-bullsh\*t tool to track user behavior within their applications through a simple user interface. Simply log an event and view simple metrics.
 
 ## Getting Started
 
