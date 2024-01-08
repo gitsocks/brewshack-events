@@ -1,8 +1,7 @@
 import { IPageParams } from "@/models/types/IPageParams";
 import { getApplicationFromServer } from "@/services/server/get-application-from-server";
-import Link from "next/link";
 import { PropsWithChildren } from "react";
-
+import { ApplicationHeader } from "./components/ApplicationHeader/ApplicationHeader";
 
 interface IParams {
     id: number;
@@ -16,9 +15,7 @@ export default async function AppsLayout({ params, children }: ILayoutParams) {
 
     return (
         <>
-            <div>
-                <h1>{application.name}</h1>
-            </div>
+            <ApplicationHeader applicationId={id} applicationName={application.name} />
             {children}
         </>
     );

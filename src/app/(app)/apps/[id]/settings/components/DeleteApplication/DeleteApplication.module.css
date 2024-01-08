@@ -1,0 +1,14 @@
+.innerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.innerContainer div h4 {
+  margin: 0;
+  margin-bottom: 0.3rem;
+}
+
+.innerContainer div p {
+  margin: 0;
+}
