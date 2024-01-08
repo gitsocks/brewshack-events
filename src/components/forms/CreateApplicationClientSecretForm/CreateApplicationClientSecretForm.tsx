@@ -4,9 +4,15 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import styles from './CreateApplicationClientSecretForm.module.css';
 import { useCreateClientSecretMutation } from "@/services/mutations/use-create-client-secret-mutation";
 
-export const CreateApplicationClientSecretForm = () => {
+export interface CreateApplicationClientSecretFormProps {
+    applicationId: number;
+}
+
+export const CreateApplicationClientSecretForm = ({
+    applicationId
+}: CreateApplicationClientSecretFormProps) => {
     const { register, handleSubmit } = useForm<ICreateClientSecretFormPayload>();
-    const { mutateAsync: createClientSecret, isLoading, data: newClientSecret } = useCreateClientSecretMutation(1);
+    const { mutateAsync: createClientSecret, isLoading, data: newClientSecret } = useCreateClientSecretMutation(applicationId);
 
     const onSubmit: SubmitHandler<ICreateClientSecretFormPayload> = async (payload: ICreateClientSecretFormPayload) => {
         await createClientSecret({ ...payload });

@@ -11,7 +11,7 @@ const SecretsPage = ({ params }: IPageParams<IParams>) => {
 
     return (
         <>
-            <ApplicationSecretsHeader />
+            <ApplicationSecretsHeader applicationId={id} />
             <ApplicationClientSecrets applicationId={id} />
         </>
     );

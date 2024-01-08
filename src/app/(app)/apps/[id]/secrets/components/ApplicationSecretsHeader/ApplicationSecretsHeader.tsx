@@ -4,10 +4,14 @@ import { useState } from 'react';
 import styles from './ApplicationSecretsHeader.module.css';
 
 import { BasicModal } from '@/components/modals/BasicModal/BasicModal';
-import { CreateApplicationClientSecretForm } from '@/components/forms/CreateApplicationClientSecretForm/CreateApplicationClientSecretForm';
+import { CreateApplicationClientSecretForm, CreateApplicationClientSecretFormProps } from '@/components/forms/CreateApplicationClientSecretForm/CreateApplicationClientSecretForm';
 import { useRouter } from 'next/navigation';
 
-export const ApplicationSecretsHeader = () => {
+type ApplicationSecretsHeaderProps = CreateApplicationClientSecretFormProps;
+
+export const ApplicationSecretsHeader = ({
+    ...props
+}: ApplicationSecretsHeaderProps) => {
     const [isOpen, open] = useState(false);
     const router = useRouter();
 
@@ -19,7 +23,7 @@ export const ApplicationSecretsHeader = () => {
                 <button onClick={() => open(true)}>Create New</button>
             </div>
             <BasicModal title='Create Secret' isOpen={isOpen} onClose={() => open(false)}>
-                <CreateApplicationClientSecretForm />
+                <CreateApplicationClientSecretForm {...props} />
             </BasicModal>
         </div>
     );
